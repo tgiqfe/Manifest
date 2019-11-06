@@ -10,7 +10,7 @@ using System.IO.Compression;
 
 namespace Manifest
 {
-    //  v0.01.005
+    //  v0.01.006
     class Program
     {
         static void Main(string[] args)
@@ -77,7 +77,7 @@ namespace Manifest
             {
                 foreach (string fileName in Directory.GetFiles(info.FormatDir, "*.ps1xml"))
                 {
-                    File.Copy(fileName, Path.Combine(info.FormatDir, Path.GetFileName(fileName)), true);
+                    File.Copy(fileName, Path.Combine(info.ModuleDir, Path.GetFileName(fileName)), true);
                 }
                 using (Process proc = new Process())
                 {

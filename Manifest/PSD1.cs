@@ -14,20 +14,14 @@ namespace Manifest
     //  v0.01.005
     class PSD1
     {
-        //const string EXTENSION = ".psd1";
-
-        //public static void Create(string projectName, string outputDir)
         public static void Create(ProjectInfo info)
         {
-            //string dllFile = Path.Combine(outputDir, projectName + ".dll");
-            //string outputFile = Path.Combine(outputDir, projectName + EXTENSION);
             if (!File.Exists(info.DllFile)) { return; }
 
             string dllFile_absolute = Path.GetFullPath(info.DllFile);
 
             //  Cmdletを探してセット
             List<string> CmdletsToExportList = new List<string>();
-            //string cmdletDir = @"..\..\..\" + projectName + @"\Cmdlet";
             foreach (string csFile in Directory.GetFiles(info.CmdletDir, "*.cs", SearchOption.AllDirectories))
             {
                 using (StreamReader sr = new StreamReader(csFile, Encoding.UTF8))
@@ -49,7 +43,6 @@ namespace Manifest
 
             //  Format.ps1xmlを探してセット
             List<string> FormatsToProcessList = new List<string>();
-            //string formatDir = string.Format(@"..\..\..\{0}\Format", projectName);
             if (Directory.Exists(info.FormatDir))
             {
                 foreach (string formatFile in Directory.GetFiles(info.FormatDir, "*.ps1xml"))
