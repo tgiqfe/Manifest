@@ -19,10 +19,12 @@ namespace Manifest
 
             ProjectInfo info = new ProjectInfo();
 
+            /*
             PSD1.Create(info.ProjectName, info.DebugDir);
             PSD1.Create(info.ProjectName, info.ReleaseDir);
             PSM1.Create(info.ProjectName, info.DebugDir);
             PSM1.Create(info.ProjectName, info.ReleaseDir);
+            */        
 
             //  Releaseフォルダーを公開用にコピー
             if (Directory.Exists(info.ReleaseDir))

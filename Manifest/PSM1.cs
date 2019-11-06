@@ -7,16 +7,17 @@ using System.IO;
 
 namespace Manifest
 {
-    //  V0.01.001
+    //  V0.01.002
     class PSM1
     {
-        const string EXTENSION = ".psm1";
-        public static void Create(string projectName, string outputDir)
+        //const string EXTENSION = ".psm1";
+        //public static void Create(string projectName, string outputDir)
+        public static void Create(ProjectInfo info)
         {
-            string dllFile = Path.Combine(outputDir, projectName + ".dll");
-            string outputFile = Path.Combine(outputDir, projectName + EXTENSION);
-            if (!File.Exists(dllFile)) { return; }
-            using (StreamWriter sw = new StreamWriter(outputFile, false, Encoding.UTF8))
+            //string dllFile = Path.Combine(outputDir, projectName + ".dll");
+            //string outputFile = Path.Combine(outputDir, projectName + EXTENSION);
+            if (!File.Exists(info.DllFile)) { return; }
+            using (StreamWriter sw = new StreamWriter(info.Psm1File, false, Encoding.UTF8))
             {
                 sw.WriteLine();
             }
