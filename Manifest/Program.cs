@@ -10,30 +10,38 @@ using System.IO.Compression;
 
 namespace Manifest
 {
-    //  V0.01.005
+    //  v0.01.005
     class Program
     {
         static void Main(string[] args)
         {
             Environment.CurrentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            ProjectInfo info = new ProjectInfo();
+            CreateDebugModule(new ProjectInfo() { Mode = Mode.Debug });
+            CreateReleaseModule(new ProjectInfo() { Mode = Mode.Release });
+        }
 
-            /*
-            PSD1.Create(info.ProjectName, info.DebugDir);
-            PSD1.Create(info.ProjectName, info.ReleaseDir);
-            PSM1.Create(info.ProjectName, info.DebugDir);
-            PSM1.Create(info.ProjectName, info.ReleaseDir);
-            */        
+        //  Debugモジュール作成
+        private static void CreateDebugModule(ProjectInfo info)
+        {
+            PSD1.Create(info);
+            PSM1.Create(info);
+        }
+
+        //  Releaseモジュール作成
+        private static void CreateReleaseModule(ProjectInfo info)
+        {
+            PSD1.Create(info);
+            PSM1.Create(info);
 
             //  Releaseフォルダーを公開用にコピー
-            if (Directory.Exists(info.ReleaseDir))
+            if (Directory.Exists(info.TargetDir))
             {
                 using (Process proc = new Process())
                 {
                     proc.StartInfo.FileName = "robocopy.exe";
                     proc.StartInfo.Arguments = string.Format(
-                        "\"{0}\" \"{1}\" /COPY:DAT /MIR /E /XJD /XJF", info.ReleaseDir, info.ModuleDir);
+                        "\"{0}\" \"{1}\" /COPY:DAT /MIR /E /XJD /XJF", info.TargetDir, info.ModuleDir);
                     proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     proc.Start();
                     proc.WaitForExit();
@@ -55,8 +63,8 @@ namespace Manifest
                     foreach (string dirName in Directory.GetDirectories(info.ScriptDir))
                     {
                         proc.StartInfo.Arguments = string.Format(
-                            "\"{0}\" \"{1}\" /COPY:DAT /MIR /E /XJD /XJF", 
-                            dirName, 
+                            "\"{0}\" \"{1}\" /COPY:DAT /MIR /E /XJD /XJF",
+                            dirName,
                             Path.Combine(info.ModuleDir, Path.GetFileName(dirName)));
                         proc.Start();
                         proc.WaitForExit();

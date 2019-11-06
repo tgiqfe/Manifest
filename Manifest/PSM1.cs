@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Manifest
 {
-    //  V0.01.002
+    //  v0.01.005
     class PSM1
     {
         //const string EXTENSION = ".psm1";

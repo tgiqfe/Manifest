@@ -14,8 +14,8 @@ namespace Manifest
         public Mode Mode { get; set; }
 
         public string ProjectName { get; set; }     //  = "プロジェクト名を指定";
-        public string DebugDir { get { return string.Format(@"..\..\..\{0}\bin\Debug", ProjectName); } }
-        public string ReleaseDir { get { return string.Format(@"..\..\..\{0}\bin\Release", ProjectName); } }
+        //public string DebugDir { get { return string.Format(@"..\..\..\{0}\bin\Debug", ProjectName); } }
+        //public string ReleaseDir { get { return string.Format(@"..\..\..\{0}\bin\Release", ProjectName); } }
 
         public string TargetDir { get { return string.Format(@"..\..\..\{0}\bin\{1}", ProjectName, Mode); } }
 

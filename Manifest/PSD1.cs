@@ -11,13 +11,10 @@ using System.Runtime.InteropServices;
 
 namespace Manifest
 {
-    //  V0.01.004
+    //  v0.01.005
     class PSD1
     {
-        //const string DESCRIPTION = "File/Directory/Registry control cmdlet";
-
         //const string EXTENSION = ".psd1";
-
 
         //public static void Create(string projectName, string outputDir)
         public static void Create(ProjectInfo info)
