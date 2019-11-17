@@ -32,6 +32,8 @@ namespace Manifest
         public string CompanyName { get; set; }     //  = "会社名";
         public string Copyright { get; set; }       //  = "コピーライト";
 
+        public string[] ExcludeCmdlet { get; set; } //  = new string[]{ "コマンドレット登録除外対象の*.cs" }
+
         public ProjectInfo() { }
     }
 }
