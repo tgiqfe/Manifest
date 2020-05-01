@@ -34,6 +34,7 @@ namespace Manifest
         public string Copyright { get; set; }       //  = "コピーライト";
 
         public string[] ExcludeCmdlet { get; set; } //  = new string[]{ "コマンドレット登録除外対象の*.cs" }
+        public ExternalPackage[] ExternalPackages { get; set; }     //  = new ExternalPackage[]{ new ExternalPackage() { その他追加パッケージ } }
 
         public ProjectInfo() { }
     }
